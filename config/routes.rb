@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :admins
 
   #会員用ルーティング設定
-  namespace :public do
+  scope module: :public do
   root to: 'homes#top'
   get "/about" => "homes#about"
   resources :items, only: [:index, :show]
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :index, :show, :create]
   resources :customers, only: [:index, :show, :edit, :update]
   resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
-  resources :cart_items, only: [:index, :create, :update, :destroy,]
+  resources :cart_items, only: [:index, :create, :update, :destroy]
 
   end
 
