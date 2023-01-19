@@ -1,5 +1,4 @@
 class Admin::SessionsController < ApplicationController
-end
 
   def new
   end
@@ -9,3 +8,5 @@ end
 
   def destroy
   end
+
+end

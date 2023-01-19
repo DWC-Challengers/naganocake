@@ -1,3 +1,28 @@
 <div class="container">
   <h2 class="title">商品新規登録</h2>
+    <%= form_with model: [:admin, @item] do |f| %>
+      <div class="field">
+        <%= f.label "商品画像" %>
+      </div>
+      <div class="field">
+        <%= f.label "商品名" %>
+        <%= f.text_field :name, placeholder: "商品名" %>
+      </div>
+      <div class="field">
+        <%= f.label "商品説明" %>
+        <%= f.text_field :text, placeholder: "ここに説明文を記述します" %>
+      </div>
+      <div class="field">
+        <%= f.label "ジャンル" %>
+      </div>
+      <div class="field">
+        <%= f.label "税抜き価格" %>
+        <%= f.text_field :non_taxed_price, placeholder: "1000" %>
+        <%= f.label "円" %>
+      </div>
+      <div class="field">
+        <%= f.label "販売ステータス" %>
+      </div>
+      <%= f.submit "新規登録", class: "btn btn-success" %>
+    <% end %>
 </div>
