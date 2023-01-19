@@ -1,24 +1,13 @@
-# README
+# 「Nagano Cake」ECサイトです！
+<img src="https://2.bp.blogspot.com/-MsLnAmmkMx4/VRE5L-27h-I/AAAAAAAAsaY/42JQG2auxZE/s800/sweets_cake_rousoku.png" width="200px">
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト
 
-Things you may want to cover:
+## 機能
 
-* Ruby version
+## バージョン
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 担当者
+【Team Challengers】
