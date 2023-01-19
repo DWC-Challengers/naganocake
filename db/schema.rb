@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 2023_01_19_054013) do
 
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -85,6 +86,26 @@ ActiveRecord::Schema.define(version: 2023_01_19_054013) do
     t.text "text", null: false
     t.integer "non_taxed_price", null: false
     t.boolean "is_active", default: true, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "tax_included_price"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "payment_method"
+    t.integer "postage"
+    t.integer "billing_amount"
+    t.integer "status"
+    t.string "address_name"
+    t.string "postal_code"
+    t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
