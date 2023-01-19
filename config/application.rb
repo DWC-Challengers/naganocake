@@ -18,5 +18,9 @@ module Naganocake
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+ #enumを日本語にする定義
+  config.i18n.default_locale = :ja
+  config.i18n.load_path += Dir[Rails.root.join('config/locales/*.yml').to_s]
   end
+  
 end

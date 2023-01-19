@@ -1,0 +1,33 @@
+<div class ="container">
+
+  <div class = "row">
+    <div class = "col-4 mb-2">
+      <span class ="px-2 py-1 bg-light">注文履歴一覧</span>
+    </div>
+    <table class ="table table-hover">
+      <thread>
+        <tr class="bg-light">
+          <th scope="col">購入日時</th>
+          <th scope="col">購入者</th>
+          <th scope="col">注文日時</th>
+          <th scope="col">注文ステータス</th>
+        </tr>
+      </thread>
+      <%# @orders.each do |order| %>
+      <tbody>
+        <tr>
+          <%#= link_to "#{order.created_at}", order_path(order.id) %>
+          <td>2022/12/12</td>
+          <%#= order.customer.name %>
+          <td>石倉基之</td>
+          <%#= order.order_items.quantity %>
+          <td>2</td>
+          <%#= order.status %>
+          <td>入金待ち</td>
+        </tr>
+      </tbody>
+      <%# end %>
+    </table>
+      <%#= paginate @orders %>
+  </div>
+</div>
