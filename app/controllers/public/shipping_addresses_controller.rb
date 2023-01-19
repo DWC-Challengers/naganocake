@@ -1,20 +1,36 @@
 class Public::ShippingAddressesController < ApplicationController
-    
-    
-def index
-end
 
-def edit
-end
+  def index
+    @shipping_addresses=ShippingAddress.all
+    @shipping_address=ShippingAddress.new
+  end
 
-def create
-end
+  def edit
+    @shipping_address=ShippingAddress.find(params[:id])
+  end
 
-def update
-end
+  def create
+    @shipping_address=ShippingAddress.new(shipping_address_params)
+    @shipping_address.save
+    redirect_to shipping_addresses_path
+  end
 
-def destroy
-end
+  def update
+    @shipping_address=ShippingAddress.find(params[:id])
+    @shipping_address.update(shipping_address_params)
+    redirect_to shipping_addresses_path
+  end
 
+  def destroy
+    @shipping_address=ShippingAddress.find(params[:id])
+    @shipping_address.destroy
+    redirect_to shipping_addresses_path
+  end
+
+  private
+
+  def shipping_address_params
+    params.require(:shipping_address).permit(:postal_code, :address, :address_name)
+  end
 
 end
