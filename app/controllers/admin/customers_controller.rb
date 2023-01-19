@@ -1,5 +1,4 @@
 class Admin::CustomersController < ApplicationController
-end
 
   def index
   end
@@ -12,3 +11,5 @@ end
 
   def update
   end
+
+end
