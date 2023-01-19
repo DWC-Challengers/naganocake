@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <h3>商品一覧</h3>
+    <h5>（全<%= item.count %>件）</h5>
+  </div>
+  
+  <% items.each do |item| %>
+  <div class="d-flex flex-row flex-wrap">
+    <div class="row">
+      <div class="col flex-fill">
+        <%= link_to item_path(item.id) do %>
+          <%= image_tag item.user.get_profile_image, size: "60x100" %>
+        <% end %>
+        <%= item.name %>
+        <%= item.non_taxed_price %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  
+  <%= paginate items %>
+  
+</div>
