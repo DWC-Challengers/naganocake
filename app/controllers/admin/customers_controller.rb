@@ -1,5 +1,4 @@
 class Admin::CustomersController < ApplicationController
-end
 
   def index
     @customers = Customer.all
@@ -14,3 +13,5 @@ end
 
   def update
   end
+
+end
