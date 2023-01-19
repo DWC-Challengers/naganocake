@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">会員一覧</div>
+  </div>
+  <div class="row">
+    <table class="table table-hover">
+      <thread>
+        <tr class="bg-light">
+          <th scope="col">会員ID</th>
+          <th scope="col">氏名</th>
+          <th scope="col">メールアドレス</th>
+          <th scope="col">ステータス</th>
+        </tr>
+      </thread>
+      <%# @customers.each do |customer| %>
+      <tbody>
+        <tr>
+          <td><%#= customer.id %>1</td>
+          <td><%#= link_to "#{customer.name}", customer_path(customer.id) %>山田花子</td>
+          <td><%#= customer.email%>hoge@example.com</td>
+          <td><%#= customer.is_deleted %>有効</td>
+        </tr>
+      </tbody>
+      <%# end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<h1>注文</h1>
+
+<div class="row">
+  <div class="col-xs-12">
+  <h2 class="head-line title_h2 text-center">注文情報入力</h2>
+      <%= form_with :model => @order,method: :post, local: true  do |f| %>
+        <h3 class="col-xs-3 sub-head text-center"><i class="fas fa-yen-sign"></i>支払い方法</h3>
+          <div class="col-xs-10 radio">
+            <%= f.radio_button :payment_method, :"クレジットカード", checked: true %>
+            <span>クレジットカード</span>
+          </div>
+          <div class="col-xs-10 radio">
+            <%= f.radio_button :payment_method, :"銀行振込" %>
+            <span>銀行振り込み</span>
+          </div>
+          </div>
+           
+
+        <h3 class="col-xs-3 sub-head text-center"><i class="fas fa-people-carry"></i>お届け先</h3>
+          <div class="col-xs-10 radio">
+            <%= f.radio_button :addresses, "registrations", checked: true  %>
+            <span>ご自身の住所</span><br>
+            
+          </div>
+
+          
+          <div class="col-xs-10 radio">
+            <%= f.radio_button :addresses, "shipping_addresses" %>
+              <span>登録済住所から選択</span><br>
+          </div>
+         
+
+          <div class="new-address col-xs-10 radio">
+            <%= f.radio_button :addresses, "new_address" %>
+            <span>新しいお届け先</span><br>
+            <div class="field form-group col-xs-11">
+              <%= f.label :"郵便番号(ハイフンなし)" %>
+              <%= f.text_field :postal_code %>
+            </div>
+            <div class="field form-group col-xs-11">
+              <%= f.label :"住所" %>
+              <%= f.text_field :address %>
+            </div>
+            <div class="field form-group col-xs-11">
+              <%= f.label :"宛名" %>
+              <%= f.text_field :name %>
+            </div>
+          </div>
+
+          <div class="btns col-xs-8">
+             <!--ユーザーのカート画面に戻るパスを指定-->
+             カートへ戻る
+            
+            <%= f.submit "確認画面へ進む" %>
+            <% end %>
+          </div>
+    </div>
