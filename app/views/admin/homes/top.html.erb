@@ -4,12 +4,13 @@
     <div class = "col-4 mb-2">
       <span class ="px-2 py-1 bg-light">注文履歴一覧</span>
     </div>
+    <%# if @order.present? %>
     <table class ="table table-hover">
       <thread>
         <tr class="bg-light">
           <th scope="col">購入日時</th>
           <th scope="col">購入者</th>
-          <th scope="col">注文日時</th>
+          <th scope="col">注文個数</th>
           <th scope="col">注文ステータス</th>
         </tr>
       </thread>
@@ -29,5 +30,8 @@
       <%# end %>
     </table>
       <%#= paginate @orders %>
+    <%# else %>
   </div>
+  <!--<div class= "row">注文がありません</div>-->
+    <%# end %>
 </div>
