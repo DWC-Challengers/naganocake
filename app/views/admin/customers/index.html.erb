@@ -12,16 +12,16 @@
           <th scope="col">ステータス</th>
         </tr>
       </thread>
-      <%# @customers.each do |customer| %>
+      <% @customers.each do |customer| %>
       <tbody>
         <tr>
-          <td><%#= customer.id %>1</td>
-          <td><%#= link_to "#{customer.name}", customer_path(customer.id) %>山田花子</td>
-          <td><%#= customer.email%>hoge@example.com</td>
-          <td><%#= customer.is_deleted %>有効</td>
+          <td><%= customer.id %></td>
+          <td><%#= link_to "#{customer.name}", "#"#customer_path(customer.id) %></td>
+          <td><%= customer.email %></td>
+          <td><%= customer.is_deleted %></td>
         </tr>
       </tbody>
-      <%# end %>
+      <% end %>
     </table>
   </div>
 </div>
