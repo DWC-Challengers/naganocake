@@ -12,11 +12,6 @@ class Admin::CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(params[:id])
-    if @customer.is_deleted == 0
-      @checked == true
-    else
-      @checked == false
-    end
   end
 
   def update
