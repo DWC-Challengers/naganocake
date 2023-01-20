@@ -6,7 +6,8 @@ def index
 end
 
 def show
-  @item=Item.find(params[:id]).per
+  @item=Item.find(params[:id])
+  @item_quantity_array = (1..10)
 end
 
 private
