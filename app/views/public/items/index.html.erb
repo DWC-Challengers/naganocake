@@ -1,23 +1,21 @@
 <div class="container">
-  <div class="row">
-    <h3>商品一覧</h3>
-    <h5>（全<%= item.count %>件）</h5>
-  </div>
-  
-  <% items.each do |item| %>
-  <div class="d-flex flex-row flex-wrap">
-    <div class="row">
-      <div class="col flex-fill">
+  <div class="row mt-5">
+    <div class="col-2">
+      <!--ジャンル検索機能実装スペース-->
+    </div>
+    <div class="col-8">
+      <h3 class="d-inline font-weight-bold">商品一覧</h3>
+      <h5 class="d-inline align-text-bottom">（全<%= @items.count %>件）</h5>
+      <% @items.each do |item| %>
+      <div class="d-flex flex-row flex-wrap flex-fill">
         <%= link_to item_path(item.id) do %>
           <%= image_tag item.user.get_profile_image, size: "60x100" %>
         <% end %>
         <%= item.name %>
-        <%= item.non_taxed_price %>
+        <%= number_to_currency(@item.add_tax_non_taxed_price, unit: "¥", strip_insignificant_zeros: true) %>
       </div>
+      <% end %>
     </div>
   </div>
-  <% end %>
-  
-  <%= paginate items %>
-  
+  <%= paginate @items %>
 </div>
