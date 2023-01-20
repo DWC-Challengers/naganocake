@@ -16,6 +16,8 @@ devise_for :customers, controllers: {
   get "/about" => "homes#about"
   resources :items, only: [:index, :show]
   resources :customers, only: [:show, :edit, :update]
+  get 'customers/quit' => "customers#quit"
+  patch 'customers/out' =>"customers#out"
   resources :orders, only: [:new, :index, :show, :create ,:thanx]
   resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
   resources :cart_items, only: [:index, :create, :update, :destroy]
