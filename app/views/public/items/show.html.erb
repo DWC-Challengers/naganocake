@@ -10,7 +10,7 @@
       <%= @item.name %>
       <%= @item.text %>
       <div class="d-inline">
-        <h3 class="font-weight-bold"><%= number_to_currency(@item.add_tax_non_taxed_price, unit: "¥", strip_insignificant_zeros: true) %></h3>
+        <h3 class="font-weight-bold">¥<%= item.with_tax_price %></h3>
         <h5 class="align-text-bottom">（税込）</h5>
       </div>
       <div class="d-inline">
