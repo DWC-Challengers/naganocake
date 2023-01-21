@@ -12,7 +12,7 @@
           <%= image_tag item.user.get_profile_image, size: "60x100" %>
         <% end %>
         <%= item.name %>
-        <%= number_to_currency(@item.add_tax_non_taxed_price, unit: "¥", strip_insignificant_zeros: true) %>
+        <h5 class="font-weight-bold">¥<%= item.with_tax_price %></h5>
       </div>
       <% end %>
     </div>
