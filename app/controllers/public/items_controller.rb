@@ -7,7 +7,7 @@ end
 
 def show
   @item=Item.find(params[:id])
-  @item_quantity_array = (1..10)
+  @cart_item=CartItem.new(cart_item_params)
 end
 
 private

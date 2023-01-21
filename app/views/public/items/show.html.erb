@@ -4,7 +4,7 @@
       <!--ジャンル検索機能実装スペース-->
     </div>
     <div class="col-3">
-      <%= image_tag @item.user.get_profile_image, size: "90x120" %>
+      <%= image_tag @item.get_image, size: "90x120" %>
     </div>
     <div class="col-5">
       <%= @item.name %>
@@ -14,8 +14,9 @@
         <h5 class="align-text-bottom">（税込）</h5>
       </div>
       <div class="d-inline">
-        <%= form_with model: @item do |f| %>
-          <%= f.select :order_item_quantity, @item_quantity_array, placeholder: "個数選択" %>
+        <%= form_with model: @cart_item do |f| %>
+          <%= f.select :order_item_quantity, *[1..10], placeholder: "個数選択" %>
+          <%= f.hidden_field :name, :value => :order_item_quantity %>
         <% end %>
         <%= f.submit "カートに入れる", class: "btn btn-success" %>
       </div>
