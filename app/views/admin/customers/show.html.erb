@@ -38,7 +38,7 @@
                       <td>
                       <% if @customer.is_deleted == false %>
                           <span class="font-weight-bold text-success">有効</span>
-                      <% elsif @customer.is_deleted == true %>
+                      <% else %>
                           <span class="text-weight-bold text-secondary">退会</span>
                       <% end %>
                       </td>
@@ -47,7 +47,7 @@
             </table>
             <div class ="mx-auto">
               <%= link_to "編集する", edit_admin_customer_path(@customer.id), class:"btn btn-success" %>
-              <%#= link_to "注文履歴一覧を見る",%>
+              <%= link_to "注文履歴一覧を見る", admin_customer_orders_path(@customer.id), class:"btn btn-primary" %>
               
             </div>
             <% else %>

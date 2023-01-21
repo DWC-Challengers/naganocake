@@ -4,7 +4,7 @@
     <div class = "col-4 mb-2">
       <span class ="px-2 py-1 bg-light">注文履歴一覧</span>
     </div>
-    <%# if @order.present? %>
+    <% if @order.present? %>
     <table class ="table table-hover">
       <thread>
         <tr class="bg-light">
@@ -14,24 +14,42 @@
           <th scope="col">注文ステータス</th>
         </tr>
       </thread>
-      <%# @orders.each do |order| %>
+      <% @orders.each do |order| %>
       <tbody>
         <tr>
-          <%#= link_to "#{order.created_at}", order_path(order.id) %>
+          <%= link_to "#{order.created_at}", order_path(order.id) %>
           <td>2022/12/12</td>
-          <%#= order.customer.name %>
+          <%= order.customer.name %>
           <td>石倉基之</td>
-          <%#= order.order_items.quantity %>
+          <%= order.order_items.quantity %>
           <td>2</td>
-          <%#= order.status %>
+          <%= order.status %>
           <td>入金待ち</td>
         </tr>
       </tbody>
-      <%# end %>
+      <% end %>
     </table>
-      <%#= paginate @orders %>
-    <%# else %>
+      <%= paginate @orders %>
+    <% else %>
   </div>
-  <!--<div class= "row">注文がありません</div>-->
-    <%# end %>
+  <div class= "row">注文がありません（下記表示例）</div>
+      <table class ="table table-hover">
+      <thread>
+        <tr class="bg-light">
+          <th scope="col">購入日時</th>
+          <th scope="col">購入者</th>
+          <th scope="col">注文個数</th>
+          <th scope="col">注文ステータス</th>
+        </tr>
+      </thread>
+      <tbody>
+        <tr>
+          <td>2022/12/12</td>
+          <td>石倉基之</td>
+          <td>2</td>
+          <td>入金待ち</td>
+        </tr>
+      </tbody>
+    </table>
+    <% end %>
 </div>

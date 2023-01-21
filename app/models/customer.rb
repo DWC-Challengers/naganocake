@@ -15,5 +15,5 @@ class Customer < ApplicationRecord
             
   validates :postal_code, length: {is: 7}, numericality: { only_integer: true }
   validates :phone_number, numericality: { only_integer: true }
-         
+  validates :is_deleted, inclusion: [true, false]
 end

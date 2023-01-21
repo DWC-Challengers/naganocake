@@ -27,7 +27,9 @@ devise_for :customers, controllers: {
   #管理者用ルーティング設定
   namespace :admin do
   root to: 'homes#top'
-  resources :customers, only: [:index, :show, :edit, :update]
+  resources :customers, only: [:index, :show, :edit, :update] do
+    resources :orders, only: [:index]
+  end
   resources :genres, only: [:index, :create, :edit, :update]
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
   resources :orders, only: [:show, :update]
