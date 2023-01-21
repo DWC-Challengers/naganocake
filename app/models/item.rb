@@ -1,10 +1,12 @@
 class Item < ApplicationRecord
-  has_many :cart_items
-  has_many :order_items
+  has_many :cart_items, dependent: :destroy
+  has_many :order_items, dependent: :destroy
   belongs_to :genre
   
-  def add_tax_non_taxed_price
-    (self.non_taxed_price * 1.10).round    
+  has_one_attached :image
+  
+  def with_tax_price
+    (non_taxed_price*1.1).floor   
   end
   
 end
