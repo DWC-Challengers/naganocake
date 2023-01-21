@@ -1,3 +1,16 @@
 <div class="container">
   <h2 class="title">商品一覧</h2>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= item.name %></td>
+        <td><%= item.non_taxed_price %></td>
+        <td><%= genres.name %></td>
+        <td>
+          <%= item.is_active %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </div>
