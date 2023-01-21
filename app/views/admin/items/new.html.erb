@@ -25,7 +25,7 @@
       </div>
       <div class="field">
         <%= f.label "ジャンル" %>
-        <%= f.collection_select :genres_id, Genre.all, :id,:name,{prompt: "--選択してください--"} %>
+        <%= f.collection_select :genres_id, Genre.all, :id, :name, {prompt: "--選択してください--"} %>
       </div>
       <div class="field">
         <%= f.label "税抜き価格" %>
