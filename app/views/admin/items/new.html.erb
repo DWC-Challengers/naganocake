@@ -1,8 +1,19 @@
 <div class="container">
   <h2 class="title">商品新規登録</h2>
     <%= form_with model: [:admin, @item] do |f| %>
+
+      <% if @item.errors.any? %>
+      <%= @item.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+      <% end %>
+
       <div class="field">
         <%= f.label "商品画像" %>
+        <%= f.file_field :image, accept: "image/*" %>
       </div>
       <div class="field">
         <%= f.label "商品名" %>
@@ -10,10 +21,11 @@
       </div>
       <div class="field">
         <%= f.label "商品説明" %>
-        <%= f.text_field :text, placeholder: "ここに説明文を記述します" %>
+        <%= f.text_area :text, placeholder: "ここに説明文を記述します" %>
       </div>
       <div class="field">
         <%= f.label "ジャンル" %>
+        <%= f.collection_select :genres_id, Genre.all, :id,:name,{prompt: "--選択してください--"} %>
       </div>
       <div class="field">
         <%= f.label "税抜き価格" %>
@@ -22,6 +34,10 @@
       </div>
       <div class="field">
         <%= f.label "販売ステータス" %>
+        <%= f.radio_button :is_active, true %>
+        <%= f.label :is_active, '販売中', value: true %>
+        <%= f.radio_button :is_active, false %>
+        <%= f.label :is_active, '販売停止中', value: false %>
       </div>
       <%= f.submit "新規登録", class: "btn btn-success" %>
     <% end %>
