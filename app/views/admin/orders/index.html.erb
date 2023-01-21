@@ -1,0 +1,11 @@
+<div class ="container">
+    <div class="row">
+        <span><%= "#{@customer.last_name}さんの注文履歴" %></span>
+    </div>
+    <% if @orders.present? %>
+        <p>ここに注文が表示されます</p>
+    <% else %>
+        <div class="row">注文はまだありません</div>
+    <% end %>
+    
+</div>

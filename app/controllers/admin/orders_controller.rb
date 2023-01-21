@@ -1,5 +1,11 @@
 class Admin::OrdersController < ApplicationController
+  #注文履歴表示用（ユーザー別）
+  def index
+    @customer = Customer.find(params[:customer_id])
+    # @orders = Order.find(params[:customer_id])
+  end
 
+  #注文詳細表示用
   def show
     @order = Order.find(params[:id])
     @order_detail = Order_item.find(params[:id])
