@@ -8,23 +8,30 @@ def edit
   @customer = current_customer
 end
 
+def quit
+    @customer = current_customer
+end
+
 def update
   @customer = current_customer
      
 	if @customer.update(customer_params)
   	flash[:success] = "登録情報を変更しました"
-		redirect_to customer_path
+		redirect_to customer_path(@customer.id)
 	else
   	render :edit and return
  	end
 end
 
-def quit
-end
+
 
 def out
 	@customer = current_customer
-  @customer.update(is_valid: true)
+
+  @customer.update(is_deleted: true)
+  reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
 end
 
 private

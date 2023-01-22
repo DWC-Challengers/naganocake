@@ -3,22 +3,22 @@
     <div class="col-2">
       <!--ジャンル検索機能実装スペース-->
     </div>
-    <div class="col-3">
-      <%= image_tag @item.get_image, size: "90x120" %>
+    <div class="col-4">
+      <%= image_tag @item.image, size: "350x250" %>
     </div>
     <div class="col-5">
       <%= @item.name %>
       <%= @item.text %>
       <div class="d-inline">
-        <h3 class="font-weight-bold">¥<%= item.with_tax_price %></h3>
+        <h3 class="font-weight-bold">¥<%= @item.with_tax_price.to_s(:delimited) %></h3>
         <h5 class="align-text-bottom">（税込）</h5>
       </div>
       <div class="d-inline">
         <%= form_with model: @cart_item do |f| %>
           <%= f.select :order_item_quantity, *[1..10], placeholder: "個数選択" %>
           <%= f.hidden_field :name, :value => :order_item_quantity %>
+          <%= f.submit "カートに入れる", class: "btn btn-success" %>
         <% end %>
-        <%= f.submit "カートに入れる", class: "btn btn-success" %>
       </div>
     </div>
   </div>
