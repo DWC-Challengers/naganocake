@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="title">商品新規登録</h2>
-    <%= form_with model: [:admin, @item],local: true do |f| %>
+    <%= form_with model: [:admin, @item] do |f| %>
 
       <% if @item.errors.any? %>
       <%= @item.errors.count %>件のエラーが発生しました
