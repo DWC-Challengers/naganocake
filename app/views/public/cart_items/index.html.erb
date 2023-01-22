@@ -27,7 +27,7 @@
             <%= image_tag item.get_image, size: "15x25" %>
             <%= item.name %>
           </td>
-          <td><%= cart_item.item.with_tax_price %></td>
+          <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
           <td>
             <%= form_with model: @cart_item do |f| %>
               <%= f.select :order_item_quantity, *[1..10], placeholder: "個数選択" %>
