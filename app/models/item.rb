@@ -10,7 +10,6 @@ class Item < ApplicationRecord
   validates :text,            presence: true
   validates :genre_id,        presence: true
   validates :non_taxed_price, presence: true
-  validates :is_active,       presence: true
 
   def add_tax_non_taxed_price
     (self.non_taxed_price * 1.10).round

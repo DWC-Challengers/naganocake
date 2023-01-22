@@ -5,7 +5,7 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= item.id %></td>
-        <td><%= link_to item.name, edit_admin_item_path(item.id) %></td>
+        <td><%= link_to item.name, admin_item_path(item.id) %></td>
         <td><%= item.non_taxed_price %></td>
         <td><%= item.genre.name %></td>
         <td>
