@@ -1,6 +1,16 @@
 <div class="container">
   <h2 class="title">ジャンル一覧・追加</h2>
     <%= form_with model: [:admin, @genre] do |f| %>
+
+      <% if @genre.errors.any? %>
+      <%= @genre.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @genre.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+      <% end %>
+
       <div class="field">
         <%= f.label "ジャンル名" %>
         <%= f.text_field :name, placeholder: "ジャンル名" %>
