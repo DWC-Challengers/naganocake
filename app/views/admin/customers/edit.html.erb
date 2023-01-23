@@ -47,12 +47,11 @@
                         <%= f.label :is_deleted, "退会", value: 1 %>
                     </td>
                 </tr>
-                <tr>
-                    <th></th>
-                    <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
-                </tr>
             </tbody>
           </table>
+          <div class="text-right">
+            <%= f.submit "変更を保存", class:"btn btn-success mr-3" %><%= link_to "戻る", admin_customer_path(@customer.id), class: "btn btn-primary" %>
+          </div>
         <% end %>
     </div>
 </div>
