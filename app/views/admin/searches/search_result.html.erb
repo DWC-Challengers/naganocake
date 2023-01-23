@@ -37,16 +37,16 @@
   </div>
   <% else %>
     <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
-    <tbody>
       <thread>
         <tr class="bg-light">
           <th scope="col">商品ID</th>
           <th scope="col">商品名</th>
           <th scope="col">ジャンル</th>
-          <th scope="col">税抜き価格</th>
+          <th scope="col">税抜価格</th>
           <th scope="col">販売ステータス</th>
         </tr>
       </thread>
+      <tbody>
       <% @items.each do |item| %>
         <tr>
           <td scope="row"><%= item.id %></td>

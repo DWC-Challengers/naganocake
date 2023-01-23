@@ -1,16 +1,16 @@
 <% if customer_signed_in? %>
-  <div class="search_form">
-    <%= form_with url: search_path, local: true, method: :get do |f| %>
-      <%= f.text_field :word %>
-      <%= f.submit "検索", class: "btn btn-primary" %>
+  <div>
+    <%= form_with url: search_path, local: true, method: :get,class:"rounded-pill bg-secondary px-3" do |f| %>
+    <%= f.text_field :word,placeholder:"商品名を入力して下さい",class:"public-menu align-middle" %>
+    <%= f.submit "検索", class: "public-menu btn btn-secondary" %>
     <% end %>
   </div>
 <% elsif admin_signed_in? %>
-  <div class="search_form">
-    <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
-      <%= f.text_field :word, placeholder:"会員氏名/商品名で検索" %>
-      <%= f.select :range, options_for_select([["会員",'Customer'], ["商品",'Item']]) %>
-      <%= f.submit "検索", class: "btn btn-primary" %>
+  <div>
+    <%= form_with url: admin_search_path, local: true, method: :get,class:"rounded-pill bg-secondary px-3" do |f| %>
+      <%= f.text_field :word, placeholder:"会員氏名/商品名で検索",class:"align-middle" %>
+      <%= f.select :range, options_for_select([["会員",'Customer'], ["商品",'Item']]),{},{class:"align-middle btn btn-secondary"} %>
+      <%= f.submit "検索", class: "btn btn-secondary" %>
     <% end %>
   </div>
 <% else %>
