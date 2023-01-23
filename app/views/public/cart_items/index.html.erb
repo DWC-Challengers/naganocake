@@ -1,14 +1,14 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-3 offset-1 mb-5 bg-light text-black">
-      <h3>ショッピングカート</h3>
+  <div class="row my-5">
+    <div class="col-2 offset-2 bg-light text-black">
+      <h4>ショッピングカート</h4>
     </div>
-    <div class="col-2">
+    <div class="col-6 text-right">
       <%= link_to "カートを空にする", cart_items_path(@cart_items), class: "btn btn-danger", method: :delete %>
     </div>
   </div>
 
-  <div class="w-75 ml-5">
+  <div class="row w-75 mx-auto">
     <table class="table table-bordered">
       <thead>
         <tr class="table-secondary">
@@ -21,7 +21,6 @@
       </thead>
       <tbody>
         <% @cart_items.each do |cart_item| %>
-        <% @total = @total + cart_item.subtotal %>
         <tr>
           <td>
             <%= image_tag item.get_image, size: "15x25" %>
@@ -40,25 +39,18 @@
             <%= link_to "削除する", cart_item_path(cart_item), class: "btn btn-danger", method: :delete %>
           </td>
         </tr>
+        <%= @total += cart_item.subtotal %>
         <% end %>
       </tbody>
     </table>
+  </div>
     
-    <div class="row">
-      <div class="col">
-        <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
-      </div>
-      <table class="table table-bordered">
-        <tr>
-          <th scope="row table-secondary" style="width: 15%"></th>
-          <td><%= @total += cart_item.subtotal %></td>
-        </tr>
-      </table>
+  <div class="row my-5">
+    <div class="col-2 offset-2">
+      <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
     </div>
-    <div class="row">
-      <div class="col d-flex align-items-center">
-        <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
-      </div>
-    </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
   </div>
 </div>
