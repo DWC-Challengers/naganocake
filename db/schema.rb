@@ -79,17 +79,17 @@ ActiveRecord::Schema.define(version: 2023_01_20_064357) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "genre_id"
-    t.string "name"
-    t.text "text"
-    t.integer "non_taxed_price"
-    t.boolean "is_active"
+    t.integer "genres_id", null: false
+    t.string "name", null: false
+    t.text "text", null: false
+    t.integer "non_taxed_price", null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
