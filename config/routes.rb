@@ -26,7 +26,9 @@ devise_for :customers, controllers: {
   patch 'customers/:id' => 'customers#update'
   resources :orders, only: [:new, :index, :show, :create ,:thanx]
   resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
-  resources :cart_items, only: [:index, :create, :update, :destroy]
+  resources :cart_items, only: [:index, :create, :update, :destroy] do
+    delete 'destroy_all'
+  end
 
   end
 

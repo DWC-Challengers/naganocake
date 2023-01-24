@@ -12,7 +12,7 @@
       <h3 class="font-weight-bold d-inline">¥ <%= @item.with_tax_price.to_s(:delimited) %></h3>
       <h5 class="align-text-bottom d-inline">（税込）</h5>
       <div class="d-flex mt-5">
-        <%= form_with model: @cart_item do |f| %>
+        <%= form_with model: CartItem.new do |f| %>
         <div>
           <%= f.select :order_item_quantity, *[1..10], { prompt: "個数選択　　" } %>
           <%= f.hidden_field :item_id, :value => @item.id %>
