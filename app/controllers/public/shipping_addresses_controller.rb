@@ -17,6 +17,7 @@ class Public::ShippingAddressesController < ApplicationController
 
   def update
     @shipping_address=ShippingAddress.find(params[:id])
+    @shipping_address.customer_id=current_customer.id
     @shipping_address.update(shipping_address_params)
     redirect_to shipping_addresses_path
   end
