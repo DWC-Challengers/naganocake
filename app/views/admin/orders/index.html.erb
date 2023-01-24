@@ -1,11 +1,36 @@
 <div class ="container">
-    <div class="row">
-        <span><%= "#{@customer.last_name}さんの注文履歴" %></span>
-    </div>
-    <% if @orders.present? %>
-        <p>ここに注文が表示されます</p>
-    <% else %>
-        <div class="row">注文はまだありません</div>
+  <div class="row">
+      <span><%= "#{@customer.customer_name}さんの注文履歴" %></span>
+  </div>
+  <table class ="table table-hover">
+    <thread>
+      <tr class="bg-light">
+        <th scope="col">購入日時</th>
+        <th scope="col">購入者</th>
+        <th scope="col">注文個数</th>
+        <th scope="col">注文ステータス</th>
+      </tr>
+    </thread>
+  <% if @orders.present? %>
+    <% @orders.each do |order| %>
+      <tbody>
+        <tr>
+          <%= link_to "#{order.created_at}", order_path(order.id) %>
+          <td>2022/12/12</td>
+          <%= order.customer.name %>
+          <td>石倉基之</td>
+          <%= order.order_items.quantity %>
+          <td>2</td>
+          <%= order.status %>
+          <td>入金待ち</td>
+        </tr>
+      </tbody>
     <% end %>
+    </table>
+    <%= paginate @orders %>
+    <%  else %>
+    </table>
+    <div class="row">注文はまだありません</div>
+  <% end %>
     
 </div>
