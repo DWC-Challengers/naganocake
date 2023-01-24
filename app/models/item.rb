@@ -18,5 +18,13 @@ class Item < ApplicationRecord
   def with_tax_price
     (non_taxed_price*1.1).floor
   end
+  
+  def self.looks(word)
+    if word.blank?
+      @item = Item.all
+    else
+      @item = Item.where("name LIKE?", "%#{word}%")
+    end
+  end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_20_064357) do
+ActiveRecord::Schema.define(version: 2023_01_23_021630) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 2023_01_20_064357) do
     t.string "order_item_quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "item_id"
+    t.integer "customer_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -85,13 +87,13 @@ ActiveRecord::Schema.define(version: 2023_01_20_064357) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "genres_id", null: false
     t.string "name", null: false
     t.text "text", null: false
     t.integer "non_taxed_price", null: false
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "genre_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -120,6 +122,7 @@ ActiveRecord::Schema.define(version: 2023_01_20_064357) do
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
