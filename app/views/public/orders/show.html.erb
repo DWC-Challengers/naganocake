@@ -15,7 +15,7 @@
               　<th class="info">配送先</th>
                 <td class="text-left"><%= @order.postal_code %><br>
                 	  <%= @order.address %><br>
-                	  <%= @order.name %>
+                	  <%= @order.address_name %>
                 </td>
               </tr>
               <tr>
@@ -24,7 +24,7 @@
               </tr>
               <tr>
                 <th class="info">ステータス</th>
-                <td class="text-left"><%= @order.order_status %></td>
+                <td class="text-left"><%= @order.status %></td>
               </tr>
           </tbody>
         </table>
@@ -60,11 +60,7 @@
         	</thead>
         </table>
     </div>
-    <% if customer_signed_in? %>
-      <%= link_to "注文履歴一覧へ戻る", customers_orders_path, class: "btn btn-info btn-lg order-index-back" %>
-    <% else %>
-      <%= link_to "会員詳細へ戻る", admin_customer_path, class: "btn btn-info order-index-back" %>
-    <% end %>
+      <%= link_to "注文履歴一覧へ戻る", orders_path, class: "btn btn-info btn-lg order-index-back" %>
   <% else %>
     <p>注文履歴がありません。</p>
   <% end %>
