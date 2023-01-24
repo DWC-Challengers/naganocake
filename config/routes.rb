@@ -16,7 +16,7 @@ devise_for :customers, controllers: {
   get "/about" => "homes#about"
   resources :items, only: [:index, :show]
   get 'customers/information/edit' => 'customers#edit'
- 
+  get 'search' => "searches#search"
  resources :customers,only: [:show,:edit] do
      collection do
        get 'quit'
@@ -33,6 +33,7 @@ devise_for :customers, controllers: {
   #管理者用ルーティング設定
   namespace :admin do
   root to: 'homes#top'
+  get 'search' => 'searches#search'
   resources :customers, only: [:index, :show, :edit, :update] do
     resources :orders, only: [:index]
   end
@@ -40,7 +41,6 @@ devise_for :customers, controllers: {
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
   resources :orders, only: [:show, :update]
   resources :order_details, only: [:update]
-
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
