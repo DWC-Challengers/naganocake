@@ -32,7 +32,9 @@ devise_for :customers, controllers: {
         end
       end
   resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
-  resources :cart_items, only: [:index, :create, :update, :destroy]
+  resources :cart_items, only: [:index, :create, :update, :destroy] do
+    delete 'destroy_all'
+  end
 
   end
 

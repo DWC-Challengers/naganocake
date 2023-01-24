@@ -2,7 +2,7 @@ class Customer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :shipping_addresses
-  #has_many :cart_items
+  has_many :cart_items
   has_many :orders
   def active_for_authentication?
     super && (is_deleted == false)
