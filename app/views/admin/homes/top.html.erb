@@ -32,7 +32,9 @@
       <%= paginate @orders %>
     <% else %>
   </div>
-  <div class= "row">注文がありません（下記表示例）</div>
+  <div class= "row">注文がありません（下記表示例）
+  <%= render 'order_search', orders: @orders %>
+  </div>
       <table class ="table table-hover">
       <thread>
         <tr class="bg-light">

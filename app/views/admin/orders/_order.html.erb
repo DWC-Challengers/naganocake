@@ -11,7 +11,7 @@
     <tbody>
       <tr>
         <th class ="col-2">購入者</th>
-        <td class ="col-10">山田花子<%#= link_to "#{order.customer.name}",admin_customer_orders_path(@order.customer_id) %></td>
+        <td class ="col-10">山田花子<%#= link_to "#{order.customer.customer_name}",admin_customer_orders_path(@order.customer_id) %></td>
       </tr>
       <tr>
         <th scope ="row">注文日</th>

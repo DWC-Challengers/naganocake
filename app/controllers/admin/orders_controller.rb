@@ -18,7 +18,12 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @customer = Customer.find(params[:customer_id])
     if @order.update(order_params)
-      render :show, success:"注文ステータスを更新しました"
+      if @order.status == 'making'
+        Order_item.find(params[:order_id]).status = 'pending'
+      else
+         Order_item.find(params[:order_id]).status =  Order_item.find(params[:order_id]).status
+      end
+      render :show
     else
       render :show
     end
