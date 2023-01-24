@@ -19,9 +19,9 @@
         <tr>
           <%= link_to "#{order.created_at}", order_path(order.id) %>
           <td>2022/12/12</td>
-          <%= order.customer.name %>
+          <%= order.customer.customer_name %>
           <td>石倉基之</td>
-          <%= order.order_items.quantity %>
+          <%= order.order_item.quantity %>
           <td>2</td>
           <%= order.status %>
           <td>入金待ち</td>

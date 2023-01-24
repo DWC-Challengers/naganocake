@@ -17,7 +17,7 @@ class Public::CartItemsController < ApplicationController
       @cart_item.save
       redirect_to cart_items_path
     else
-      @cart_item=CartItem.new
+      @cart_item=CartItem.create(cart_item_params)
       @item=Item.find(params[:cart_item][:item_id])
       render template: "public/items/show", status: :unprocessable_entity
     end
