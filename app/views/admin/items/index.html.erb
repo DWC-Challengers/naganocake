@@ -4,7 +4,7 @@
       <span class="rounded bg-light py-2 px-3 font-weight-bold">商品一覧</span>
     </div>
     <div class="ml-auto">
-      <a href="items/new" class="btn btn-circle btn-circle-c btn-shadow">
+      <a href="items/new" class="btn btn-shadow circle">
         <i class="fas fa-plus"></i>
       </a>
     </div>
@@ -22,7 +22,6 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
         <% @items.each do |item| %>
           <tr>
             <td><%= item.id %></td>
@@ -36,9 +35,9 @@
                 <p class="text-black-50">販売停止中</p>
               <% end %>
             </td>
-          </tr><br>
+          </tr>
         <% end %>
-        </tr>
+        <%= paginate @items %>
       </tbody>
     </table>
   </div>
