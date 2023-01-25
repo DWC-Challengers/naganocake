@@ -1,4 +1,5 @@
-<h1>注文</h1>
+<h2></h2>
+
 <div class="container-fluid">
 <div class="row">
   <div class="col-xs-12">
@@ -9,18 +10,18 @@
         <h3 class="col-xs-5 sub-head text-center">支払い方法</h3>
           <div class="col-xs-10 radio text-center">
             <%= f.radio_button :payment_method, "credit_card", checked: true %>
-            <span>&nbsp;クレジットカード</span>
+            <span><%= f.label :payment_method_credit_card, "クレジットカード" %></span>
           </div>
           <div class="col-xs-10 radio text-center">
             <%= f.radio_button :payment_method, :"transfer" %>
-            <span>&nbsp;銀行振り込み</span>
+            <span><%= f.label :payment_method_transfer, "銀行振込" %></span>
           </div>
            
 
         <h3 class="col-xs-5 sub-head text-center">お届け先</h3>
           <div class="col-xs-10 radio text-center">
-            <%= f.radio_button :addresses, "registrations", checked: true  %>
-            <span>&nbsp;ご自身の住所</span><br>
+           <%= f.radio_button :address_number, 1 %>
+            <span>&nbsp;<%= f.label :address_number_1, "ご自身の住所" %></span><br>
              &emsp;&emsp;<%= " 〒#{current_customer.postal_code} #{current_customer.address}" %>
             <br>
             &emsp;&emsp;<%= "#{current_customer.last_name} #{current_customer.first_name}" %>
@@ -28,15 +29,15 @@
 
           
           <div class="col-xs-10 radio text-center">
-            <%= f.radio_button :addresses, "shipping_addresses" %>
-              <span>&nbsp;登録済住所から選択</span><br>
-               &emsp;&emsp;<%= f.collection_select(:shipping_address_id, @shipping_addresses, :id,,:postal_code,:address,:address_name) %>
+           <%= f.radio_button :address_number, 2 %>
+              <span>&nbsp; <%= f.label :address_number_2, "登録先の住所" %></span><br>
+               &emsp;&emsp;<%= f.collection_select(:shipping_address_id, current_customer.shipping_addresses.all, :id,:address, include_blank: "選択して下さい") %>
           </div>
          
 
           <div class="new-address col-xs-10 radio text-center">
-            <%= f.radio_button :addresses, "new_address" %>
-            <span>&nbsp;新しいお届け先</span><br>
+           <%= f.radio_button :address_number, 3 %>
+            <span>&nbsp; <%= f.label :address_number_3, "新しいお届け先" %></span><br>
             <div class="field form-group col-xs-11">
               <%= f.label :"郵便番号" %>
               <%= f.text_field :postal_code %>
@@ -56,8 +57,9 @@
              カート(<%= current_customer.cart_items.count %>)へ戻る<% end %>
             
             <%= f.submit "確認画面へ進む",class: "glyphicon glyphicon-zoom-in btn btn-success"%>
-           <% end %>
+           
           </div>
+          <% end %>
     </div>
     <% else %>
       <p>お客様のショッピングカートに商品はありませんので注文情報の入力ができません。</p>
