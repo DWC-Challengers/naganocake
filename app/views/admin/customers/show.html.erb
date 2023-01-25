@@ -1,40 +1,48 @@
 <div class="container">
     <div class="row">
     <div class="my-5 col-8">
+        <% flash.each do |key, value| %>
+        <div class="mb-4">
+          <span class="alert alert-success alert-dismissible" role="alert">
+             <%= content_tag(:span, value, class: key) %>
+            <button class="close", data-dismiss="alert">☓</button>
+          </span>
+        </div>
+        <% end %>
         <% if @customer.present? %>
-            <span class ="px-2 bg-light"><%= @name %>さんの会員詳細</span>
-            <table class="mt-3 table table-borderless">
+            <span class ="rounded bg-light py-2 px-3 font-weight-bold"><%= @name %>さんの会員詳細</span>
+            <table class="mt-3 table table-bordered rounded-top">
                 <tbody>
                     <tr>
-                      <th class="col-4">会員ID</th>
+                      <th class="col-3 table-active">会員ID</th>
                       <td class="col-6"><%= @customer.id %></td>
                     </tr>
                     <tr>
-                      <th class="col-4 my-2">氏名</th>
+                      <th class="col-3 table-active">氏名</th>
                       <td><%= @name %></td>
                     </tr>
                     <tr>
-                      <th class="col-4">フリガナ</th>
+                      <th class="col-3 table-active">フリガナ</th>
                       <td><%= @name_kana %></td>
                     </tr>
                     <tr>
-                      <th class="col-4">郵便番号</th>
+                      <th class="col-3 table-active">郵便番号</th>
                       <td><%= @customer.postal_code %></td>
                     </tr>
                     <tr>
-                      <th class="col-4">住所</th>
+                      <th class="col-3 table-active">住所</th>
                       <td><%= @customer.address %></td>
                     </tr>
                     <tr>
-                      <th class="col-4">電話番号</th>
+                      <th class="col-3 table-active">電話番号</th>
                       <td><%= @customer.phone_number %></td>
                     </tr>
                     <tr>
-                      <th class="col-4">メールアドレス</th>
+                      <th class="col-3 table-active">メールアドレス</th>
                       <td><%= @customer.email %></td>
                     </tr>
                     <tr>
-                      <th class="col-4">会員ステータス</th>
+                      <th class="col-3 table-active">会員ステータス</th>
                       <td>
                       <% if @customer.is_deleted == false %>
                           <span class="font-weight-bold text-success">有効</span>
@@ -45,9 +53,10 @@
                     </tr>
                 </tbody>
             </table>
-            <div class ="mx-auto">
-              <%= link_to "編集する", edit_admin_customer_path(@customer.id), class:"btn btn-success" %>
-              <%= link_to "注文履歴一覧を見る", admin_customer_orders_path(@customer.id), class:"btn btn-primary" %>
+            <div class ="mx-auto text-center">
+              <%= link_to "編集する", edit_admin_customer_path(@customer.id), class:"btn btn-success btn-lg" %>
+              <%= link_to "注文履歴一覧を見る", admin_customer_orders_path(@customer.id), class:"btn btn-lg btn-primary mx-2" %>
+              <%= link_to "戻る", admin_customers_path, class:"btn btn-lg btn-info" %>
             </div>
             <% else %>
               <p>会員登録はありません</p>

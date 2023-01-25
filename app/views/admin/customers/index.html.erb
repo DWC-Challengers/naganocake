@@ -12,13 +12,19 @@
           <th scope="col">ステータス</th>
         </tr>
       </thread>
-      <% @customers.each do |customer| %>
+        <% @customers.each do |customer| %>
       <tbody>
         <tr>
           <td><%= customer.id %></td>
           <td><%= link_to "#{customer.last_name+customer.first_name}", admin_customer_path(customer.id) %></td>
           <td><%= customer.email %></td>
-          <td><%= customer.customer_status %></td>
+          <td>
+            <% if customer.is_deleted == true %>
+              <span class="font-weight-bold text-secondary"><%= customer.customer_status%></span>
+            <% else %>
+              <span class="font-weight-bold text-success"><%= customer.customer_status %></span>
+            <% end %>
+          </td>
         </tr>
       </tbody>
       <% end %>
