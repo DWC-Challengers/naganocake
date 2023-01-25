@@ -1,3 +1,9 @@
+<% unless customer_signed_in? %>
+  <div class="alert alert-primary" role="alert">
+    カートを利用するためには、ログインする必要があります
+  </div>
+<% end %>
+
 <% if @cart_item.save == false %>
   <%= flash[:notice] %>
 <% end %>
@@ -12,9 +18,10 @@
     </div>
     <div class="col-5 ml-3">
       <h2 class="font-weight-bold"><%= @item.name %></h2>
-      <h4 class="h-50 mb-5"><%= @item.text %></h4>
+      <h4 class="h-50 mb-3"><%= @item.text %></h4>
       <h3 class="font-weight-bold d-inline">¥ <%= @item.with_tax_price.to_s(:delimited) %></h3>
       <h5 class="align-text-bottom d-inline">（税込）</h5>
+      <p>※送料 1配送につき800円（全国一律）</p>
       <div class="mt-5">
         <%= form_with model: @cart_item do |f| %>
         <div class="input-group">
