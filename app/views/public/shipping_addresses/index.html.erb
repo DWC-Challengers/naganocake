@@ -4,7 +4,7 @@
 </div>
 
 <% if @shipping_address.errors.any? %>
-  <%= @shipping_address.errors.count %>件のエラーが発生しました %>
+  <%= @shipping_address.errors.count %>件のエラーが発生しました
   <ul>
     <% @shipping_address.errors.full_messages.each do |message| %>
       <li><%= message %></li>
