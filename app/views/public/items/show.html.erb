@@ -1,10 +1,5 @@
-<% if @cart_item.errors.any? %>
-  <%= @cart_item.errors.count %>件のエラーが発生しました %>
-  <ul>
-    <% @cart_item.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+<% if @cart_item.save == false %>
+  <%= flash[:notice] %>
 <% end %>
 
 <div class="container">
@@ -20,14 +15,14 @@
       <h4 class="h-50 mb-5"><%= @item.text %></h4>
       <h3 class="font-weight-bold d-inline">¥ <%= @item.with_tax_price.to_s(:delimited) %></h3>
       <h5 class="align-text-bottom d-inline">（税込）</h5>
-      <div class="d-flex mt-5">
+      <div class="mt-5">
         <%= form_with model: @cart_item do |f| %>
-        <div>
+        <div class="input-group">
           <%= f.select :order_item_quantity, *[1..10], { prompt: "個数選択　　" } %>
           <%= f.hidden_field :item_id, :value => @item.id %>
           <%= f.submit "カートに入れる", class: "btn btn-success ml-5" %>
-        <% end %>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
