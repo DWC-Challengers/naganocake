@@ -1,7 +1,7 @@
 class CartItem < ApplicationRecord
     
-  belongs_to :customer, optional: true
-  belongs_to :item, optional: true
+  belongs_to :customer
+  belongs_to :item
   
   validates :order_item_quantity, presence: true, numericality: {only_integer: true}
   
