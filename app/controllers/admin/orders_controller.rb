@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
   #注文履歴表示用（ユーザー別）
   def index
     @customer = Customer.find(params[:customer_id])
