@@ -56,19 +56,19 @@
         <% end %>
         </div>
       <% else %>
-      <div class="public-menu btn-group" role="group" aira-label="Header menu" >
-        <%= link_to about_path, class:"nav-item btn" do %>
-          <li>About</li>
-        <% end %>
-        <%= link_to items_path, class:"nav-item btn" do %>
-          <li>商品一覧</li>
-        <% end %>
-        <%= link_to new_customer_registration_path, method: :get, class:"nav-item btn" do %>
-          <li>新規登録</li>
-        <% end %>
-        <%= link_to customer_session_path,method: :get, class:"nav-item btn" do %>
-          <li>ログイン</li>
-        <% end %>
+        <div class="public-menu btn-group" role="group" aira-label="Header menu" >
+          <%= link_to about_path, class:"nav-item btn" do %>
+            <li>About</li>
+          <% end %>
+          <%= link_to items_path, class:"nav-item btn" do %>
+            <li>商品一覧</li>
+          <% end %>
+          <%= link_to new_customer_registration_path, method: :get, class:"nav-item btn" do %>
+            <li>新規登録</li>
+          <% end %>
+          <%= link_to customer_session_path,method: :get, class:"nav-item btn" do %>
+            <li>ログイン</li>
+          <% end %>
         </div>
       <% end %>
     <% end %>
