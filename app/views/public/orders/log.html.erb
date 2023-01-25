@@ -4,42 +4,40 @@
     <% if current_customer.cart_items.present? %>
       <table class="table table-hover table-inverse table-bordered">
         <thead>
+           <th>商品名</th>
+           <th>単価</th>
+           <th>数量</th>
+           <th>小計</th>
           <% @cart_items.each do |cart| %>
           <tr class="info">
-            <th>商品名</th>
+           
             <td><%= cart.item.name %></td>
-            <th>税込</th>
-            <td><%= (cart.item.with_tax_price).to_s(:delimited) %></td>
-            <th>数量</th>
-            <td><%= cart.quantity %></td>
-            <th>小計</th>
-            <td><%= (cart.item.with_tax_price*cart.quantity).to_s(:delimited) %></td>
+          
+            <td><%= cart.item.with_tax_price %></td>
+           
+            <td><%= cart.order_item_quantity %></td>
+            
+            <td><%= (cart.item.with_tax_price)*(cart.order_item_quantity.to_i) %></td>
           </tr>
+           <% end %>
         </thead>
-        <tbody>
-          <% @cart_items.each do |cart| %>
-            <tr>
-              <td class="text-left">
-                <%= attachment_image_tag( cart.product, :image, size: "60x50", fallback: "no_image.jpg") %>
-                <%= cart.item.name %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
       </table>
     </div>
     <div class="col-xs-3 billing">
       <table class="table table-hover table-condensed table-bordered">
-          <tr>
+         <tr>
             <th class="info">送料</th>
           </tr>
-          <tr>
+           <td><%= 800 %></td>
+         <tr>
             <th class="info">商品合計</th>
           </tr>
-          <td><%= cart.quantity %></td>
+           <td><%= @total%></td>
           <tr>
             <th class="info">請求金額</th>
-            <td><%= @total.to_s(:delimited) %></td>
+          </tr>
+           <td><%= @total + 800%></td>
+        
       </table>
     </div>
     <div class="col-xs-9 billing">
