@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <%= form_with model: shipping_address do |f| %>
+    <div class="form-group">
+      <div class="row mb-2 ml-5">
+        <div class="col-2">
+          <label for="InputPostalCode">郵便番号（ハイフンなし）</label>
+        </div>
+        <div class="col">
+          <%= f.text_field :postal_code, size: 40, placeholder: "0000000" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row mb-2 ml-5">
+        <div class="col-2">
+          <label for="InputAddress">住所</label>
+        </div>
+        <div class="col">
+          <%= f.text_field :address, size: 90, placeholder: "東京都渋谷区代々木神園町0-0" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row mb-5 ml-5">
+        <div class="col-2">
+          <label for="InputAddressName">宛名</label>
+        </div>
+        <div class="col-3">
+          <%= f.text_field :address_name, size: 40, placeholder: "令和道子" %>
+        </div>
+        <div class="col-2 offset-3">
+          <% if current_page?(shipping_addresses_path) %>
+            <%= f.submit "新規登録", class: "btn btn-success btn-block" %>
+          <% else %>
+            <%= f.submit "変更内容を保存", class: "btn btn-success btn-block" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

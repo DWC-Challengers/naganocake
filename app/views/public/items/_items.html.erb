@@ -1,0 +1,11 @@
+<% items.each do |item| %>
+<div class="card d-inline-flex mt-2 border border-0">
+  <div class="card-body px-0 mr-2">
+  <%= link_to item_path(item.id) do %>
+    <%= image_tag item.image, size: "200x120" %>
+  <% end %>
+  <h5 class="font-weight-bold"><%= item.name %></h5>
+  <h5 class="font-weight-bold">¥<%= item.with_tax_price.to_s(:delimited) %></h5>
+  </div>
+</div>
+<% end %>
