@@ -55,7 +55,7 @@ def log
       render :new
     end
     else
-    redirect_to "/orders/thanx"
+    redirect_to "/orders"
     end
   @cart_items = current_customer.cart_items.all 
   @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
