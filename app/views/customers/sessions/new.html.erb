@@ -1,26 +1,54 @@
-<h2>ログイン</h2>
+<div class="col-2 offset-2 my-5 bg-light text-black text-center">
+  <h3>ログイン</h3>
+</div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="col-3 offset-2 mb-3 bg-light text-black text-center">
+  <h5>会員の方はこちらからログイン</h5>
+</div>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  
+<div class="container">
+  <div class="row field mb-2">
+    <div class="col-2 offset-3">
+      <%= f.label :email %>
+    </div>
+    <div class="col-3">
+      <%= f.email_field :email, autofocus: true, size: 50, autocomplete: "email" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="row field mb-2">
+    <div class="col-2 offset-3">
+      <%= f.label :password %>
+    </div>
+    <div class="col-3">
+      <%= f.password_field :password, size: 50, autocomplete: "current-password" %>
+    </div>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="row field my-2">
+      <div class="col-2 offset-5">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "こちら" %>から新規登録を行なってください。
+  
+  <div class="row actions mb-5">
+    <div class="col-2 offset-5">
+      <%= f.submit "ログイン", class: "btn btn-primary btn-block" %>
+    </div>
   </div>
-<% end %>
+  <% end %>
+</div>
+
+<div class="col-3 actions offset-2 mb-3 bg-light text-black text-center">
+  <h5>会員登録がお済みでない方</h5>
+</div>
+<div class="col-6 offset-3">
+  <p>（新規登録への遷移ボタン）から新規登録を行なってください。</p>
+</div>
 
 <!--%= render "devise/shared/links" %>
