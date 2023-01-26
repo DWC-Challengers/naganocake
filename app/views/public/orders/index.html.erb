@@ -25,10 +25,12 @@
     		    <%= order.address %><br>
     		    <%= order.address_name %>
     		    </td>
-    		   
     		    <td class="text-right">
-    		    <%= @total.to_s(:delimited) %>円
+    		    <%= order.billing_amount %>円
     		    </td>
+    		     <td>
+              <%= order.status_i18n %>
+    		     </td>
          	    <td>
        	        <%= link_to "注文詳細", order_path(order), class: "glyphicon glyphicon-zoom-in btn btn-success" %>
        	        </td>
