@@ -43,6 +43,7 @@ devise_for :customers, controllers: {
   namespace :admin do
   root to: 'homes#top'
   get 'search' => 'searches#search'
+  get 'order_search' => 'homes#order_search'
   resources :customers, only: [:index, :show, :edit, :update] do
     resources :orders, only: [:index]
   end

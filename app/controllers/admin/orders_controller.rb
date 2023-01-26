@@ -1,8 +1,9 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
   #注文履歴表示用（ユーザー別）
   def index
     @customer = Customer.find(params[:customer_id])
-    # @orders = Order.find(params[:customer_id])
+    # @orders = Order.find(params[:customer_id]).page(params[:page])
   end
 
   #注文詳細表示用
@@ -18,7 +19,12 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @customer = Customer.find(params[:customer_id])
     if @order.update(order_params)
-      render :show, success:"注文ステータスを更新しました"
+      if @order.status == 'making'
+        Order_item.find(params[:order_id]).status = 'pending'
+      else
+         Order_item.find(params[:order_id]).status =  Order_item.find(params[:order_id]).status
+      end
+      render :show
     else
       render :show
     end

@@ -1,0 +1,7 @@
+ <span>  
+    <%= form_with model:orders, url: admin_order_search_path, local: true, method: :get do |f| %>
+      <%#= f.select :order_status, options_from_collection_for_select(Order.all, :id, :status) %>
+      <%= f.select :order_status, options_for_select([["全て",''],["入金待ち", 0],["入金確認", 1],["製作中", 2],["発送準備中", 3],["発送済み", 4]]) %>
+      <%= f.submit "絞り込み" %>
+    <% end %>
+ </span>

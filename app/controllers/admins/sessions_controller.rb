@@ -2,6 +2,8 @@
 
 class Admins::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :check_customer_login
+  
 
   # GET /resource/sign_in
   # def new
@@ -25,6 +27,12 @@ class Admins::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
+  def check_customer_login
+    if customer_signed_in?
+      sign_out(:customer)
+    end 
+  end
+
   def after_sign_in_path_for(resource)
     admin_root_path
   end
@@ -32,4 +40,5 @@ class Admins::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     new_admin_session_path
   end
+  
 end

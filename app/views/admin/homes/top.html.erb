@@ -2,7 +2,7 @@
 
   <div class = "row">
     <div class = "my-4">
-      <span class ="px-2 py-1 bg-light">注文履歴一覧</span>
+      <span class ="rounded bg-light py-2 px-3 font-weight-bold">注文履歴一覧</span>
     </div>
     <% if @order.present? %>
     <table class ="table table-hover">
@@ -19,9 +19,9 @@
         <tr>
           <%= link_to "#{order.created_at}", order_path(order.id) %>
           <td>2022/12/12</td>
-          <%= order.customer.name %>
+          <%= order.customer.customer_name %>
           <td>石倉基之</td>
-          <%= order.order_items.quantity %>
+          <%= order.order_item.quantity %>
           <td>2</td>
           <%= order.status %>
           <td>入金待ち</td>
@@ -32,7 +32,9 @@
       <%= paginate @orders %>
     <% else %>
   </div>
-  <div class= "row">注文がありません（下記表示例）</div>
+  <div class= "row">注文がありません（下記表示例）
+  <%= render 'order_search', orders: @orders %>
+  </div>
       <table class ="table table-hover">
       <thread>
         <tr class="bg-light">

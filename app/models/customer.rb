@@ -34,7 +34,7 @@ class Customer < ApplicationRecord
 
   # 氏名（姓＋名（カナ））
   def customer_name_kana
-    customer_name = last_name_kana + "　" + first_name_kana
+    customer_name_kana = last_name_kana + "　" + first_name_kana
   end
    
   # is_deletedステータスの変換

@@ -1,0 +1,74 @@
+    <% if order_item.present? %>
+      <table class="table table-hover table-sm ">
+        <thread>
+          <tr>
+            <th scope="row">商品名</th>
+            <th scope="row">単価（税込）</th>
+            <th scope="row">数量</th>
+            <th scope="row">小計</th>
+            <th scope="row">製作ステータス</th>
+            <th scope="row"></th>
+          </tr>
+        </thread>
+        <tbody>
+          <% order_item.each do |item| %>
+            <%= form_with model: [:admin, item] do |f| %>
+            <tr>
+              <td><%= item.name %></td>
+              <td><%= item.tax_included_price %></td>
+              <td><%= item.quantity %></td>
+              <td><%= item.tax_included_price * item.quantity %></td>
+              <td><%= f.select :status, options_from_collection_for_select(OrderItem.all, :id, :status) %></td>
+              <td><%= f.submit "更新", class:"btn btn-success" %></td>
+            </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <!--<p>注文詳細がありません</p>-->
+      <table class="table table-sm col-8">
+        <thead>
+          <tr class="table-secondary">
+            <th scope="col">商品名</th>
+            <th scope="col">単価（税込）</th>
+            <th scope="col">数量</th>
+            <th scope="col">小計</th>
+            <th scope="col">製作ステータス</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%# order_item.each do |item| %>
+          <%#= form_with model: [:admin, item] do |f| %>
+          <tr>
+            <td>1<%#= item.name %></td>
+            <td>2<%#= item.tax_included_price %></td>
+            <td>3<%#= item.quantity %></td>
+            <td>4<%#= item.tax_included_price * item.quantity %></td>
+            <td>5<%#= f.select :status, options_from_collection_for_select(OrderItem.all, :id, :status) %></td>
+            <td>6<%#= f.submit "更新", class:"btn btn-success" %></td>
+          </tr>
+          <%# end %>
+          <%# end %>
+        </tbody>
+      </table>
+      <table class="col-3 offset-1 table table-bordered table-sm">
+        <tbody>
+          <tr>
+            <th class ="col-5 font-weight-bold">商品合計</li>
+            <td class ="text-right col-7">円</td>
+          </tr>
+          <tr>  
+            <th class ="font-weight-bold">送料</li>
+            <td class ="text-right">円</td>
+          </tr>
+          <tr>
+            <th class ="font-weight-bold">請求金額合計</li>
+            <td class ="text-right">円</td>
+          </tr>
+        </tbody>
+
+      </table>
+
+    <% end %>
