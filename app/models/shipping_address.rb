@@ -5,4 +5,8 @@ class ShippingAddress < ApplicationRecord
     validates :address, presence: true, length: {maximum: 80}
     validates :address_name, presence: true, length: {maximum: 40}
     
+    
+    def full_address
+   postal_code + address + address_name
+    end
 end
