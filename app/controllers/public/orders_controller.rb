@@ -74,7 +74,7 @@ private
     params.require(:order).permit(:address, :address_name, :payment_method,:postal_code,:billing_amount,:status)
   end
 
-  def address_params
-    params.require(:order).permit(:postal_code, :address, :address_name,:address_number, :shipping_address_id,:status)
+  def shipping_address_params
+    params.require(:order).permit(:postal_code, :address, :address_name,:address_number, :shipping_address_id,)
   end
 end
