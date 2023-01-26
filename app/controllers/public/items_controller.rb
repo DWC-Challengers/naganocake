@@ -15,5 +15,4 @@ private
     params.require(:items).permit(:name, :text, :non_taxed_price, :is_active)
   end
   
-
 end
