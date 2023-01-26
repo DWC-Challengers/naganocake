@@ -15,7 +15,7 @@ before_action :authenticate_admin!
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to admin_items_path
+      redirect_to admin_item_path(@item.id)
     else
       @genres = Genre.all
       render :new
