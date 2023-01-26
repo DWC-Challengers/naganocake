@@ -20,7 +20,7 @@ class Admin::OrdersController < ApplicationController
     @order_item = OrderItem.where(order_id: params[:id])
     if @order.update(order_params)
       if @order.status == "payment_confirm"
-        @order_item.update_all(status: "in_production") 
+        @order_item.update_all(status: "pending") 
       end
     end
       # @order = Order.find(params[:id])

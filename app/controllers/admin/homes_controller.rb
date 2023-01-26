@@ -9,13 +9,8 @@ class Admin::HomesController < ApplicationController
   
   def order_search
     @order_status = params[:order_status]
-    if @order_status.blank?
-      @orders = Order.page(params[:page])
-      render "admin/homes/top"
-    else
-      @orders = Order.looks(params[:order_status]).page(params[:page])
-      render "admin/homes/top"
-    end
+    @orders = Order.looks(params[:order_status]).page(params[:page])
+    render "admin/homes/top"
   end
   
 private
