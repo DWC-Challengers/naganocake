@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
     <div class="my-5 col-8">
+      <% if flash[:success].present? %>
         <% flash.each do |key, value| %>
         <div class="mb-4">
           <span class="alert alert-success alert-dismissible" role="alert">
@@ -9,6 +10,7 @@
           </span>
         </div>
         <% end %>
+      <% end %>
         <% if @customer.present? %>
             <span class ="rounded bg-light py-2 px-3 font-weight-bold"><%= @name %>さんの会員詳細</span>
             <table class="mt-3 table table-bordered rounded-top">

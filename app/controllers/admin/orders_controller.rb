@@ -1,39 +1,31 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
   #注文履歴表示用（ユーザー別）
+  
   def index
     @customer = Customer.find(params[:customer_id])
-    # @orders = Order.find(params[:customer_id]).page(params[:page])
+    @orders = Order.where(customer_id: params[:customer_id]).page(params[:page])
   end
 
   #注文詳細表示用
   def show
-    # @order = Order.find(params[:id])
-    # @order_detail = Order_item.find(params[:id])
-    # @customer = Customer.find(params[:customer_id])
-    # @name = @customer.last_name + "　" + @customer.first_name
+    @order = Order.find(params[:id])
+    @order_item = OrderItem.where(order_id: params[:id])
+    # @customer = Customer.find(params[:order][:customer_id])
     
   end
 
   def update
     @order = Order.find(params[:id])
-    @customer = Customer.find(params[:customer_id])
+    @order_item = OrderItem.where(order_id: params[:id])
     if @order.update(order_params)
-      if @order.status == 'making'
-        Order_item.find(params[:order_id]).status = 'pending'
-      else
-         Order_item.find(params[:order_id]).status =  Order_item.find(params[:order_id]).status
+      if @order.status == "payment_confirm"
+        @order_item.update_all(status: "in_production") 
       end
-      render :show
-    else
-      render :show
     end
-    @order_item = Order_item.find(params[:id])
-    if @order_item.update(order_detail_params)
-      render :show, detail_success:"制作ステータスを更新しました"
-    else
-      render :show
-    end
+      # @order = Order.find(params[:id])
+      # @order_item = OrderItem.where(order_id: params[:id])
+    redirect_to request.referer
   end
   
   private
@@ -43,7 +35,7 @@ class Admin::OrdersController < ApplicationController
   end
   
   def order_detail_params
-    params.require(:order_detail).permit(:status)
+    params.require(:order_item).permit(:status)
   end
 
 end
