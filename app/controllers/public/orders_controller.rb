@@ -8,13 +8,12 @@ end
 
 def index
      @orders = Order.all
-     @cart_items = current_customer.cart_items.all 
-     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-
+     
 end
 
 def show
     @order = Order.find(params[:id])
+    @order_items = @order.order_items
 end
 
 def create
@@ -48,17 +47,20 @@ def log
       ship = ShippingAddress.find(params[:order][:shipping_address_id])
       @order.postal_code = ship.postal_code
       @order.address     = ship.address
-      @order.address_name        = ship.name
+      @order.address_name        = ship.address_name
      
     elsif params[:order][:address_number] == "3"
       @order.postal_code = params[:order][:postal_code]
       @order.address     = params[:order][:address]
-      @order.address_name        = params[:order][:name]
-      @ship = "1"
+      @order.address_name        = params[:order][:address_name]
+    
+    else
+            render 'new'
+
     end
     
   @cart_items = current_customer.cart_items.all 
-  @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+ 
 
 end
 
@@ -69,10 +71,10 @@ end
 private
 
   def order_params
-    params.require(:order).permit(:address, :address_name, :payment_method)
+    params.require(:order).permit(:address, :address_name, :payment_method,:postal_code,:billing_amount,:status)
   end
 
   def address_params
-    params.require(:order).permit(:postal_code, :address, :address_name)
+    params.require(:order).permit(:postal_code, :address, :address_name,:address_number, :shipping_address_id,:status)
   end
 end
