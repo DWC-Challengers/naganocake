@@ -15,10 +15,19 @@
       </ul>
       <% end %>
 
-      <%= f.label "ジャンル名", class: "mr-5" %>
-      <%= f.text_field :name, placeholder: "ジャンル名", class: "mr-5" %>
-      
-      <%= f.submit "新規登録", class: "btn btn-success" %>
+      <div>
+        <table>
+          <td>
+            <%= f.label "ジャンル名", class: "mr-5" %>
+          </td>
+          <td>
+            <%= f.text_field :name, placeholder: "ジャンル名", class: "mr-5" %>
+          </td>
+          <td>
+            <%= f.submit "新規登録", class: "btn btn-success" %>
+          </td>
+        </table>
+      </div>
     <% end %>
   </div>
 
