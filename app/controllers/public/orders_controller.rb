@@ -8,6 +8,9 @@ end
 
 def index
      @orders = Order.all
+     @cart_items = current_customer.cart_items.all 
+     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+
 end
 
 def show
@@ -37,26 +40,23 @@ end
 def log 
     @order = Order.new(order_params)
     if params[:order][:address_number] == "1"
-    @order.name = current_customer.name
-    @order.address = current_customer.customer_address
-    
+      @order.postal_code = current_customer.postal_code
+      @order.address     = current_customer.address
+      @order.address_name        = current_customer.last_name +
+                           current_customer.first_name
     elsif params[:order][:address_number] == "2"
-    if Address.exists?(name: params[:order][:shipping_address_id])
-     @order.name = Address.find(params[:order][:shipping_address_id]).name
-      @order.address = Address.find(params[:order][:shipping_address_id]).address
-    else
-      render :new
-    end
+      ship = ShippingAddress.find(params[:order][:shipping_address_id])
+      @order.postal_code = ship.postal_code
+      @order.address     = ship.address
+      @order.address_name        = ship.name
      
     elsif params[:order][:address_number] == "3"
-    address_new = current_customer.addresses.new(address_params)
-    if address_new.save 
-    else
-      render :new
+      @order.postal_code = params[:order][:postal_code]
+      @order.address     = params[:order][:address]
+      @order.address_name        = params[:order][:name]
+      @ship = "1"
     end
-    else
-    redirect_to "/orders"
-    end
+    
   @cart_items = current_customer.cart_items.all 
   @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
 

@@ -1,7 +1,7 @@
-<h1>注文履歴一覧</h1>
 <div calss="row">
   <div class="col-xs-12">
     <h2 class="text-center">注文履歴一覧</h2>
+    
       <% if @orders.present? %>
         <table>
           <thead>
@@ -27,7 +27,7 @@
     		    </td>
     		   
     		    <td class="text-right">
-    		    <!--%= order.total_price.to_s(:delimited) %-->円
+    		    <%= @total.to_s(:delimited) %>円
     		    </td>
          	    <td>
        	        <%= link_to "注文詳細", order_path(order), class: "glyphicon glyphicon-zoom-in btn btn-success" %>
