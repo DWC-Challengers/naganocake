@@ -2,8 +2,7 @@ class Public::HomesController < ApplicationController
   before_action :check_admin_login
     
 def top
-  @items=Item.all.limit(4).order("created_at DESC")
-  
+  @items=Item.all.limit(4).order("created_at DESC").where(is_active: "true")
 end 
 
 def about
