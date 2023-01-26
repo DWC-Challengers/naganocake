@@ -4,7 +4,40 @@
   </div> 
   <div class="row">
     <%= render 'order', order: @order %>
-    <%= render 'detail',order_item: @order_item %>
+        <% if @order_item.present? %>
+      <table class="table table-hover table-sm ">
+        <thread>
+          <tr>
+            <th scope="row">商品名</th>
+            <th scope="row">単価（税込）</th>
+            <th scope="row">数量</th>
+            <th scope="row">小計</th>
+            <th scope="row">製作ステータス</th>
+            <th scope="row"></th>
+          </tr>
+        </thread>
+        <tbody>
+          <% @order_item.each do |item| %>
+            <tr>
+              <td><%= item.item.name %></td>
+              <td><%= item.item.with_tax_price %></td>
+              <td><%= item.quantity %></td>
+              <td><%= item.item.with_tax_price * item.quantity %></td>
+              <td>
+              <%= form_with model: [:admin, item], url: admin_order_detail_path(item), method: :patch, local: true do |f| %>
+                <%= f.select :status, OrderItem.statuses_i18n.invert, {} %>
+                <%= f.submit "更新", class:"btn btn-success btn-sm" %>
+              <% end %>
+              </td>
+            </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+    <% else %>
+      <p>注文詳細がありません</p>
+
+    <% end %>
   </div>
 </div>
 

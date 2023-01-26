@@ -17,14 +17,10 @@
     <% @orders.each do |order| %>
       <tbody>
         <tr>
-          <%= link_to "#{order.created_at}", order_path(order.id) %>
-          <td>2022/12/12</td>
-          <%= order.customer.name %>
-          <td>石倉基之</td>
-          <%= order.order_items.quantity %>
-          <td>2</td>
-          <%= order.status %>
-          <td>入金待ち</td>
+          <td><%= link_to "#{order.created_at}", admin_order_path(order.id) %></td>
+          <td><%= order.customer.customer_name %></td>
+          <td><%= order.order_items.where(order_id: order.id).sum(:quantity) %></td>
+          <td><%= order.status_i18n %></td>
         </tr>
       </tbody>
     <% end %>

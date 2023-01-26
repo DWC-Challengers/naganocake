@@ -10,7 +10,7 @@
      making: "製作中"
      preparing_delivery: "発送準備中"
      delivered: "発送済み"
-   order_items:
+   order_item:
     status:
      not_possible: "製作不可"
      pending: "製作待ち"
