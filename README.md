@@ -9,9 +9,9 @@
 ## 機能
 
 ## バージョン
-・Rails:6.1.7
-・Devise:4.8.1
-・bootstrap 4.5
+・Rails:6.1.7</br>
+・Devise:4.8.1</br>
+・bootstrap 4.5</br>
 
 ## 担当者
 【Team Challengers】
