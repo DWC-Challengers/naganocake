@@ -1,4 +1,4 @@
-# 「Nagano Cake」ECサイトです！
+# Team Challengersが手掛ける「Nagano Cake」ECサイトです！
 <div align="center">
   <img src="https://user-images.githubusercontent.com/119114032/215122136-d8cf7216-c405-4fdf-8ab4-3238dbb31f93.png">
 </div>
