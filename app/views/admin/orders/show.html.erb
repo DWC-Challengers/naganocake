@@ -1,19 +1,23 @@
 <div class="container">
   <div class="row mt-3">
-    <span class="rounded bg-light py-2 px-3 font-weight-bold">注文履歴詳細</span>
+    <span class="rounded bg-light mb-3 py-2 px-3 font-weight-bold">注文履歴詳細</span>
   </div> 
   <div class="row">
     <%= render 'order', order: @order %>
+  </div>
         <% if @order_item.present? %>
-      <table class="table table-hover table-sm ">
+      <div class="row">
+        <span class="rounded bg-light mb-3 py-2 px-3 font-weight-bold">商品情報</span>
+      </div>
+      <div class="row">
+      <table class="col-8 table table-bordered table-sm ">
         <thread>
-          <tr>
+          <tr class="table-secondary">
             <th scope="row">商品名</th>
             <th scope="row">単価（税込）</th>
             <th scope="row">数量</th>
             <th scope="row">小計</th>
             <th scope="row">製作ステータス</th>
-            <th scope="row"></th>
           </tr>
         </thread>
         <tbody>
@@ -23,9 +27,9 @@
               <td><%= item.item.with_tax_price %></td>
               <td><%= item.quantity %></td>
               <td><%= item.item.with_tax_price * item.quantity %></td>
-              <td>
+              <td class="col-3">
               <%= form_with model: [:admin, item], url: admin_order_detail_path(item), method: :patch, local: true do |f| %>
-                <%= f.select :status, OrderItem.statuses_i18n.invert, {} %>
+                <%= f.select :status, OrderItem.statuses_i18n.invert, {},class:"ml-3 mr-1" %>
                 <%= f.submit "更新", class:"btn btn-success btn-sm" %>
               <% end %>
               </td>
@@ -34,9 +38,30 @@
 
         </tbody>
       </table>
+        <table class="col-3 offset-1 table table-bordered table-sm">
+        <tbody>
+          <tr>
+            <th class ="col-5 table-secondary font-weight-bold">商品合計</li>
+            <td class="text-right"><%= @order.billing_amount - 800 %>円</td>
+          </tr>
+          <tr>  
+            <th class ="table-secondary font-weight-bold">送料</li>
+            <td class="text-right"><%= 800 %>円</td>
+          </tr>
+          <tr>
+            <th class ="table-secondary font-weight-bold">請求金額合計</li>
+            <td class="text-right"><%= @order.billing_amount %>円</td>
+          </tr>
+        </tbody>
+
+      </table>
+      </div>
+      <div class="mt-5 text-center">
+        <%= link_to "#{@order.customer.customer_name}さんの注文履歴へ", admin_customer_orders_path(@order.customer_id), class:"btn btn-lg btn-primary" %>
+        <%= link_to "注文履歴一覧へ", admin_root_path, class:"ml-5 btn btn-lg btn-info" %>
+      </div>
     <% else %>
       <p>注文詳細がありません</p>
-
     <% end %>
   </div>
 </div>

@@ -26,6 +26,12 @@ class Admin::CustomersController < ApplicationController
       render :edit
       
     end
+  
+  end
+  
+  def customer_search
+    @customers = Customer.looks(params[:customer_status]).page(params[:page])
+    render "admin/customers/index"
   end
   
   

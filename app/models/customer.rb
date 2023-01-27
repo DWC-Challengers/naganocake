@@ -46,4 +46,14 @@ class Customer < ApplicationRecord
     end
   end
   
+  def self.looks(customer_status)
+    if customer_status == "1"
+      @customers = Customer.where(is_deleted: true)
+    elsif customer_status == "0"
+      @customers = Customer.where(is_deleted: false)
+    else
+      @customers = Customer.all
+    end
+  end 
+  
 end

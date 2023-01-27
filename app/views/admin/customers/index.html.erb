@@ -1,6 +1,11 @@
 <div class="container">
-  <div class="row my-3">
-    <span class="rounded bg-light py-2 px-3 font-weight-bold">会員一覧</span>
+  <div class="row mt-3">
+    <div class = "col-6 my-4">
+      <span class="rounded bg-light py-2 px-3 font-weight-bold">会員一覧</span>
+    </div>
+    <div class="offset-2 col-4 ml-auto">
+      <%= render 'customer_search', customers: @customers %>
+    </div>
   </div>
   <div class="row">
     <table class="table table-hover">
@@ -16,7 +21,7 @@
       <tbody>
         <tr>
           <td><%= customer.id %></td>
-          <td><%= link_to "#{customer.last_name+customer.first_name}", admin_customer_path(customer.id) %></td>
+          <td><%= link_to "#{customer.customer_name}", admin_customer_path(customer.id) %></td>
           <td><%= customer.email %></td>
           <td>
             <% if customer.is_deleted == true %>
