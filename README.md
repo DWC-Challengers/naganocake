@@ -7,13 +7,13 @@
 長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト
 
 ## バージョン
-・Rails:6.1.7</br>
-・Devise:4.8.1</br>
-・bootstrap 4.5</br>
+・Rails:6.1.7  
+・Devise:4.8.1  
+・bootstrap 4.5  
 
 ## 担当者
 【Team Challengers】
-・しげもり
-・ただっち
-・バンブー
-・やま
+・しげもり  
+・ただっち  
+・バンブー  
+・やま  
