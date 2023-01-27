@@ -2,7 +2,7 @@
 <p align="center">
  !(app/assets/images/naganocake-logo.png)
 </p>
-
+app/assets/images/naganocake-logo.png
 ## 概要
 長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト
 
