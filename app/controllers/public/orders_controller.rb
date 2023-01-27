@@ -7,7 +7,7 @@ def new
 end
 
 def index
-     @orders = Order.all
+     @orders = Order.where(customer: current_customer)
      
 end
 
