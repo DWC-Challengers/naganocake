@@ -1,4 +1,14 @@
 <div class="container">
+  
+  <% if @genre.errors.any? %>
+    <%= @genre.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
   <div class="row my-3">
     <span class="rounded bg-light py-2 px-3 font-weight-bold">ジャンル一覧・追加</span>
   </div>

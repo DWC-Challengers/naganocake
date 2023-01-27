@@ -1,4 +1,14 @@
 <div class="container">
+  
+  <% if @item.errors.any? %>
+    <%= @item.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
   <div class="row my-3">
     <div class="my-auto py-auto">
       <span class="rounded bg-light py-2 px-3 font-weight-bold">商品新規登録</span>
@@ -26,7 +36,7 @@
           <!--%= f.select :genre_id, @genres.map{ |genre| [genre.name,@item.genre_id=genre.id]} %-->
         </tr>
         <tr>
-          <td><%= f.label "税抜き価格" %></td>
+          <td><%= f.label "税抜価格" %></td>
           <td>
             <%= f.text_field :non_taxed_price, placeholder: "1000" %>
             <%= f.label "円" %>
