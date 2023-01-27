@@ -1,6 +1,6 @@
 # 「Nagano Cake」ECサイトです！
 <p align="center">
- !(assets/images/naganocake-logo.png))
+ !(app/assets/images/naganocake-logo.png)
 </p>
 
 ## 概要
