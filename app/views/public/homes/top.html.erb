@@ -1,0 +1,32 @@
+
+<%= flash[:notice] %>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-2">
+      <!--ジャンル検索機能実装スペース-->
+    </div>
+    <div class="col-8">
+      <div class="card">
+        <img src="/assets/top_image.jpeg" class="img-responsive" alt="イメージ画像" width="750" height="350" %>
+        <div class="card-img-overlay d-flex align-items-center w-75 mx-auto">
+          <div class="card-body bg-white border border-dark">
+            <p class="card-text">
+              ようこそ、ながのCAKEへ！<br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-10 offset-2">
+      <h3 class="font-weight-bold">新着商品</h3>
+      <%= render "public/items/items", items: @items %>
+      <p class="text-right"><u><%= link_to "全ての商品を見る >", items_path %></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<h2 class="col-2 offset-1 my-5 bg-light text-black">注文情報確認</h2>
+
+<div class="container">
+<div calss="row">
+     <% if current_customer.cart_items.present? %>
+     <table class="table table-sm ">
+     <tr>
+     <td valign="top">
+      <table class="col table table-bordered table-sm ">
+        
+           <th class="table-secondary">商品名</th>
+           <th class="table-secondary">単価(税込)</th>
+           <th class="table-secondary">数量</th>
+           <th class="table-secondary">小計</th>
+           <% total = 0 %>
+          <% @cart_items.each do |cart| %>
+          <tr class="info">
+           
+            <td><%= image_tag cart.item.image, size: "60x50" %> &emsp;&emsp;
+            <%= cart.item.name %></td>
+          
+            <td><%= cart.item.with_tax_price %></td>
+           
+            <td><%= cart.order_item_quantity %></td>
+            
+            <td><%= (cart.item.with_tax_price)*(cart.order_item_quantity.to_i) %></td>
+          </tr>
+          <% total += (cart.item.with_tax_price)*(cart.order_item_quantity.to_i) %>
+           <% end %>
+      
+      </table>
+       </td>
+       
+    <td valign="top">
+      <table class="col table table-bordered table-sm">
+         <tr>
+            <th class="info table-secondary">送料</th>
+          <% @order.postage=800 %>
+           <td class="text-left"><%= @order.postage %></td>
+            </tr>
+         <tr>
+            <th class="info table-secondary">商品合計</th>
+           <td class="text-left"><%= total.to_i %></td>
+             </tr>
+          <tr>
+            <th class="info table-secondary">請求金額</th>
+            <% @order.billing_amount = @order.postage + total.to_i %>
+           <td class="text-left"><%= @order.billing_amount %></td>
+            </tr>
+      </table>
+       </td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="col-md-9 billing">
+     <table class="table table-borderless">
+        <tr>
+          <th  class="info"><h6><strong>支払方法</strong></h6></th>
+          <td class="text-left">
+            <%= @order.payment_method_i18n %>
+          </td>
+        </tr>
+        <tr>
+          <th  class="info"><h6><strong>お届け先</strong></h6></th>
+          <td class="text-left">
+            <%= "〒#{@order.postal_code} #{@order.address} #{@order.address_name}" %>
+          </td>
+        </tr>
+        </table>
+      </div>
+
+      <div class ="col-xs-11">
+      <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+        <%= f.hidden_field :customer_id %>
+        <%= f.hidden_field :postal_code %>
+        <%= f.hidden_field :address %>
+        <%= f.hidden_field :address_name %>
+        <%= f.hidden_field :payment_method %>
+        <%= f.hidden_field :billing_amount %>
+        <%= f.hidden_field :status %>
+        <%= link_to "注文情報入力へ戻る", new_order_path, class: "btn btn-info col-xs-3 back" %>
+        　　<i class="fas fa-shipping-fast fa-2x"></i>
+        <%= f.submit "購入を確定する", class: "btn btn-warning center-block col-xs-5" %>
+      <% end %>
+      </div>
+    <% else %>
+        <p>お客様のショッピングカートに商品はありませんので注文確定ができません。</p>
+        <p><%= link_to "商品一覧", items_path %>から商品をお探し下さい。</p>
+    <% end %>
+  </div>
+</div>

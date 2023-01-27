@@ -1,0 +1,91 @@
+<div class="container-fluid">
+<div class="col-2 offset-1 my-5 bg-light text-black text-center">
+<h4>注文履歴詳細</h4></div>
+
+<div calss="row">
+  <% if @order.present? %>
+  <table class="table table-sm ">
+    <tr>
+      <td valign="top">
+  	 <table class="table table-bordered table-sm ">
+  	    <strong><i class="far fa-user"></i>注文情報</strong>
+          <tbody>
+              <tr >
+                <th class="table-secondary" style="width: 10%">注文日</th>
+          	  <td class="text-left"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+              </tr>
+              <tr >
+              　<th class="table-secondary">配送先</th>
+                <td class="text-left">〒<%= @order.postal_code %><br>
+                	  <%= @order.address %><br>
+                	  <%= @order.address_name %>
+                </td>
+              </tr>
+              <tr >
+              　<th class="table-secondary">支払方法</th>
+                <td class="text-left"><%= @order.payment_method_i18n %></td>
+              </tr>
+              <tr>
+                <th class="table-secondary">ステータス</th>
+                <td class="text-left"><%= @order.status_i18n %></td>
+              </tr>
+          </tbody>
+        </table>
+        </td>
+        
+      <td valign="top">
+      <strong><i class="fas fa-yen-sign"></i>請求情報</strong>
+        <table class="col-4 table table-bordered table-sm">
+            <tr>
+              <th class="table-secondary">商品合計</th>
+              <td class="text-left col-5"><%=(@order.billing_amount - 800)%></td>
+            </tr>
+            <tr>
+              <th class="table-secondary">配送料</th>
+              <td class="text-left col-5">800</td>
+            </tr>
+            <tr>
+              <th class="table-secondary"><strong>ご請求金額</strong></th>
+              <td class="text-left col-5"><%= @order.billing_amount %></td>
+            </tr>
+        </table>
+         </td>
+        </tr>
+      </table>
+    </div>
+    
+    <div calss="row">
+    <div class="col-md-6 order-details">
+    	<strong><i class="fas fa-store"></i>注文内容</strong>
+         <table class="table table-bordered mx-5 w-auto">
+        	<thead>
+  	      <tr class="table-secondary">
+  	      	 <th scope="col" style="width: 40%">商品</th>
+  	         <th scope="col" style="width: 10%">単価(税込)</th>
+  	      	 <th scope="col" style="width: 10%">個数</th>
+  	       <th scope="col" style="width: 10%">小計</th>
+  	      </tr>
+        	</thead>
+        
+        	<% @order_items.each do |order_it| %>
+        	<tr>
+  	        <td scope="col" style="width: 40%"><%= order_it.item.name%></td>
+  	        <td scope="col" style="width: 10%"><%= order_it.item.with_tax_price %></td>
+  	        <td scope="col" style="width: 10%"><%= order_it.quantity %></td>
+  	        <td scope="col" style="width: 10%"><%= (order_it.item.with_tax_price)*(order_it.quantity.to_i) %></td>
+  	      
+            </tr>
+             <% end %>
+        </table>
+    </div>
+    </div>
+    <div calss="row">
+      <%= link_to "注文履歴一覧へ戻る", orders_path, class: "btn btn-info btn-lg order-index-back center" %>
+  <% else %>
+    <p>注文履歴がありません。</p>
+  <% end %>
+  </div>
+
+  
+</div>
+</div>

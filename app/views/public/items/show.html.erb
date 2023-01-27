@@ -1,0 +1,36 @@
+<% unless customer_signed_in? %>
+  <div class="alert alert-primary" role="alert">
+    カートを利用するためには、ログインする必要があります
+  </div>
+<% end %>
+
+<% if @cart_item.save == false %>
+  <%= flash[:notice] %>
+<% end %>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-2">
+      <!--ジャンル検索機能実装スペース-->
+    </div>
+    <div class="col-4">
+      <%= image_tag @item.image, size: "350x250" %>
+    </div>
+    <div class="col-5 ml-3">
+      <h2 class="font-weight-bold"><%= @item.name %></h2>
+      <h4 class="h-50 mb-3"><%= @item.text %></h4>
+      <h3 class="font-weight-bold d-inline">¥ <%= @item.with_tax_price.to_s(:delimited) %></h3>
+      <h5 class="align-text-bottom d-inline">（税込）</h5>
+      <p>※送料 1配送につき800円（全国一律）</p>
+      <div class="mt-5">
+        <%= form_with model: @cart_item do |f| %>
+        <div class="input-group">
+          <%= f.select :order_item_quantity, *[1..10], { prompt: "個数選択　　" } %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.submit "カートに入れる", class: "btn btn-success ml-5" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

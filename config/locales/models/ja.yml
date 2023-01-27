@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      shipping_address: 配送先
+    attributes:
+      shipping_address:
+        postal_code: 郵便番号
+        address: 住所
+        address_name: 宛名
+        
+      genre:
+        name: ジャンル名
+      
+      item:
+        image: 商品画像
+        name: 商品名
+        text: 商品説明文
+        genre_id: ジャンル
+        non_taxed_price: 税抜価格
