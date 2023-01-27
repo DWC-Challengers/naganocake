@@ -4,7 +4,7 @@
     <%= link_to item_path(item.id) do %>
       <%= image_tag item.image, size: "200x120" %>
     <% end %>
-    <h5 class="font-weight-bold"><%= item.name %></h5>
+    <h5 class="font-weight-bold"><%= truncate(item.name, length: 10) %></h5>
     <h5 class="font-weight-bold">¥<%= item.with_tax_price.to_s(:delimited) %></h5>
     </div>
   </div>

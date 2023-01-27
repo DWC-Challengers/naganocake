@@ -4,8 +4,10 @@
       <!--ジャンル検索機能実装スペース-->
     </div>
     <div class="col-10">
-      <h3 class="font-weight-bold">商品一覧</h3>
-      <h5 class="align-text-bottom">（全<%= Item.all.count %>件）</h5>
+      <div class="bg-light text-black text-center">
+        <h3 class="font-weight-bold">商品一覧</h3>
+        <h5 class="align-text-bottom">（全<%= Item.all.count %>件）</h5>
+      </div>
       <%= render "items", items: @items %>
       <div class="d-flex justify-content-center">
         <u><%= paginate @items %>
