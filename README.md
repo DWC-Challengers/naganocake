@@ -1,6 +1,6 @@
 # 「Nagano Cake」ECサイトです！
 <p align="center">
- ![nagano cake](https://github.com/DWC-Challengers/naganocake/blob/main/app/assets/images/naganocake-logo.png)
+ ![nagano cake](/blob/main/app/assets/images/naganocake-logo.png)
 </p>
 
 ## 概要
