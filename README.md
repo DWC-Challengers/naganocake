@@ -12,7 +12,7 @@
 ・bootstrap 4.5  
 
 ## 担当者
-【Team Challengers】
+【Team Challengers】  
 ・しげもり  
 ・ただっち  
 ・バンブー  
