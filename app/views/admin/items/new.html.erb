@@ -5,57 +5,46 @@
     </div>
   </div>
 
-  <div>
+  <div class="row">
     <%= form_with model: [:admin, @item] do |f| %>
-
-      <% if @item.errors.any? %>
-      <%= @item.errors.count %>件のエラーが発生しました
-      <ul>
-        <% @item.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-      <% end %>
-
-      <div>
-        <table class="table ml-5">
-          <tr class="field">
-            <td><%= f.label "商品画像" %></td>
-            <td><%= f.file_field :image, accept: "image/*" %></td>
-          </tr>
-          <tr class="field">
-            <td><%= f.label "商品名" %></td>
-            <td><%= f.text_field :name, placeholder: "商品名" %></td>
-          </tr>
-          <tr class="field">
-            <td><%= f.label "商品説明" %></td>
-            <td><%= f.text_area :text, placeholder: "ここに説明文を記述します" %></td>
-          </tr>
-          <tr class="field">
-            <td><%= f.label "ジャンル" %></td>
-            <td><%= f.collection_select :genre_id, @genres, :id, :name, {prompt: "--選択してください--"} %></td>
-            <!--%= f.select :genre_id, @genres.map{ |genre| [genre.name,@item.genre_id=genre.id]} %-->
-          </tr>
-          <tr class="field">
-            <td><%= f.label "税抜き価格" %></td>
-            <td>
-              <%= f.text_field :non_taxed_price, placeholder: "1000" %>
-              <%= f.label "円" %>
-            </td>
-          </tr>
-          <tr class="field">
-            <td><%= f.label "販売ステータス" %></td>
-            <td>
+      <table class="col-12 mt-3 table table-borderless bg-light border rounded">
+        <tr>
+          <td><%= f.label "商品画像" %></td>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "商品名" %></td>
+          <td><%= f.text_field :name, placeholder: "商品名" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "商品説明" %></td>
+          <td><%= f.text_area :text, placeholder: "ここに説明文を記述します" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "ジャンル" %></td>
+          <td><%= f.collection_select :genre_id, @genres, :id, :name, {prompt: "--選択してください--"} %></td>
+          <!--%= f.select :genre_id, @genres.map{ |genre| [genre.name,@item.genre_id=genre.id]} %-->
+        </tr>
+        <tr>
+          <td><%= f.label "税抜き価格" %></td>
+          <td>
+            <%= f.text_field :non_taxed_price, placeholder: "1000" %>
+            <%= f.label "円" %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label "販売ステータス" %></td>
+          <td>
             <%= f.radio_button :is_active, true %>
             <%= f.label :is_active, '販売中', value: true %>
             <%= f.radio_button :is_active, false %>
             <%= f.label :is_active, '販売停止中', value: false %>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class="text-center">
-        <%= f.submit "新規登録", class: "btn btn-success" %>
+          </td>
+        </tr>
+      </table>
+      <div class="text-right">
+        <%= f.submit "新規登録", class: "btn btn-success mr-3" %>
+        <%= link_to "戻る", admin_items_path, class: "btn btn-primary" %>
       </div>
     <% end %>
   </div>

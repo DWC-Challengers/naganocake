@@ -3,31 +3,19 @@
     <span class="rounded bg-light py-2 px-3 font-weight-bold">ジャンル一覧・追加</span>
   </div>
 
-  <div>
+  <div class="row">
     <%= form_with model: [:admin, @genre] do |f| %>
-
-      <% if @genre.errors.any? %>
-      <%= @genre.errors.count %>件のエラーが発生しました
-      <ul>
-        <% @genre.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-      <% end %>
-
-      <div>
-        <table>
-          <td>
-            <%= f.label "ジャンル名", class: "mr-5" %>
-          </td>
-          <td>
-            <%= f.text_field :name, placeholder: "ジャンル名", class: "mr-5" %>
-          </td>
-          <td>
-            <%= f.submit "新規登録", class: "btn btn-success" %>
-          </td>
-        </table>
-      </div>
+      <table class="col-12 mt-3 table table-borderless bg-light border rounded">
+        <td>
+          <%= f.label "ジャンル名", class: "mr-5" %>
+        </td>
+        <td>
+          <%= f.text_field :name, placeholder: "ジャンル名", class: "mr-5" %>
+        </td>
+        <td>
+          <%= f.submit "新規登録", class: "btn btn-success" %>
+        </td>
+      </table>
     <% end %>
   </div>
 
